@@ -15,16 +15,21 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey("d"))
         {
-            // Object moves sideways
+            // Object moves sideways right
             rb.AddForce(sideForce * Time.deltaTime, 0, 0,
                 ForceMode.VelocityChange);
         }
 
         if (Input.GetKey("a"))
         {
-            // Object moves sideways
+            // Object moves sideways left
             rb.AddForce(-sideForce * Time.deltaTime, 0, 0,
                 ForceMode.VelocityChange);
+        }
+
+        if (rb.position.y < -.5f)
+        {
+            FindObjectOfType<GameManager>().GameOver();
         }
     }
 }
